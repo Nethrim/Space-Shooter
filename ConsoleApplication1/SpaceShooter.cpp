@@ -20,7 +20,7 @@ int main()
 		totalScore = 0;
 		playAgain = 0;
 		
-		do//asdasdasd
+		do
 		{	
 			cout << "Please set Difficulty using:" << endl;
 			cout << "1 - Easy" << endl;

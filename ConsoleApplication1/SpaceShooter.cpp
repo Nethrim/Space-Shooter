@@ -52,8 +52,7 @@ int main()
 			default:
 				cout << endl;
 				cout << "You made a non-existent choise,try again..." << endl;
-				break;
-				
+				break;		
 			}
 		} while (picked != true);
 
@@ -77,7 +76,6 @@ int main()
 			cout << "Do you want to play again? (y / n) :" << endl;
 			cin >> playAgain;
 			cout << endl;
-
 		
 			if (playAgain == 'n')
 			{

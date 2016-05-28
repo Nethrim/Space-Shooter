@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 const int ALIEN_POINTS = 150;
@@ -10,16 +11,18 @@ int choise;
 bool picked = false;
 int totalScore = 0;
 int tries = 0;
-char playAgain;
+string playAgain;
 
 int main()
 {
 	do
-	{
+	{	
+		aliensKilled = 0;
 		tries = 0;
 		totalScore = 0;
-		playAgain = 0;
-		
+		choise = 0;
+		playAgain = "empty";
+								
 		do
 		{	
 			cout << "Please set Difficulty using:" << endl;
@@ -28,6 +31,8 @@ int main()
 			cout << "3 - Hard" << endl;
 			cout << "Choise:";
 			cin >> choise;
+			cin.clear();
+			cin.ignore();
 
 			switch (choise)
 			{
@@ -52,14 +57,27 @@ int main()
 			default:
 				cout << endl;
 				cout << "You made a non-existent choise,try again..." << endl;
+				picked = false;
 				break;		
 			}
+
 		} while (picked != true);
 
 		for (int i = 0; i != alienWaves; ++i)
 		{
-			cout << "Number of aliens destroyed this wave:";
-			cin >> aliensKilled;
+			aliensKilled = 0;
+			while (aliensKilled == 0)
+			{
+				cout << "Number of aliens destroyed this wave:";
+				cin >> aliensKilled;
+				cin.clear();
+				cin.ignore();
+				if (aliensKilled == 0)
+				{
+					cout << "Wrong input try again..." << endl;
+				}
+			}
+
 			score = (aliensKilled * ALIEN_POINTS);
 			cout << "Score:" << score << endl;
 			cout << endl;
@@ -71,19 +89,21 @@ int main()
 		cout << "Average Score per Wave:" << totalScore / tries << endl;
 		cout << endl;
 		
-		while (playAgain != 'n' && playAgain != 'y')
+		while (playAgain != "n" && playAgain != "y")
 		{
 			cout << "Do you want to play again? (y / n) :" << endl;
 			cin >> playAgain;
+			cin.clear();
+
 			cout << endl;
 		
-			if (playAgain == 'n')
+			if (playAgain == "n")
 			{
 				cout << "Game Over" << endl;
 				cout << endl;
 				break;
 			}
-			else if (playAgain != 'n' && playAgain != 'y')
+			else if (playAgain != "n" && playAgain != "y")
 			{
 				cout << "Wrong answer" << endl;
 				cout << endl;
@@ -94,7 +114,7 @@ int main()
 			}
 		}
 
-	} while (playAgain == 'y');
+	} while (playAgain == "y");
 	
 	system("pause");
 }
